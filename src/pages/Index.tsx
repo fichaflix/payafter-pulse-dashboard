@@ -1,14 +1,16 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import OverviewSection from "@/components/dashboard/OverviewSection";
 import SalesAnalysis from "@/components/dashboard/SalesAnalysis";
 import PaymentControl from "@/components/dashboard/PaymentControl";
 import OperationMetrics from "@/components/dashboard/OperationMetrics";
 import IntegrationStatus from "@/components/dashboard/IntegrationStatus";
-import { CalendarDays, TrendingUp, Users, CreditCard, BarChart3, Zap } from "lucide-react";
+import { CalendarDays, TrendingUp, Users, CreditCard, BarChart3, Zap, UserCheck } from "lucide-react";
 
 const Index = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("today");
@@ -22,17 +24,25 @@ const Index = () => {
             <h1 className="text-4xl font-bold text-slate-800 mb-2">Dashboard Pay After</h1>
             <p className="text-slate-600 text-lg">Controle completo da operação em tempo real</p>
           </div>
-          <div className="flex gap-2">
-            {["today", "week", "month"].map((period) => (
-              <Badge 
-                key={period}
-                variant={selectedPeriod === period ? "default" : "outline"}
-                className="cursor-pointer px-3 py-1 capitalize"
-                onClick={() => setSelectedPeriod(period)}
-              >
-                {period === "today" ? "Hoje" : period === "week" ? "Semana" : "Mês"}
-              </Badge>
-            ))}
+          <div className="flex gap-2 items-center">
+            <Link to="/vendedores">
+              <Button className="bg-blue-600 hover:bg-blue-700">
+                <UserCheck className="h-4 w-4 mr-2" />
+                Painel Vendedores
+              </Button>
+            </Link>
+            <div className="flex gap-2">
+              {["today", "week", "month"].map((period) => (
+                <Badge 
+                  key={period}
+                  variant={selectedPeriod === period ? "default" : "outline"}
+                  className="cursor-pointer px-3 py-1 capitalize"
+                  onClick={() => setSelectedPeriod(period)}
+                >
+                  {period === "today" ? "Hoje" : period === "week" ? "Semana" : "Mês"}
+                </Badge>
+              ))}
+            </div>
           </div>
         </div>
 
