@@ -10,7 +10,7 @@ import SalesAnalysis from "@/components/dashboard/SalesAnalysis";
 import PaymentControl from "@/components/dashboard/PaymentControl";
 import OperationMetrics from "@/components/dashboard/OperationMetrics";
 import IntegrationStatus from "@/components/dashboard/IntegrationStatus";
-import { CalendarDays, TrendingUp, Users, CreditCard, BarChart3, Zap, UserCheck } from "lucide-react";
+import { CalendarDays, TrendingUp, Users, CreditCard, BarChart3, Zap, UserCheck, Trophy } from "lucide-react";
 
 const Index = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("today");
@@ -24,11 +24,17 @@ const Index = () => {
             <h1 className="text-4xl font-bold text-slate-800 mb-2">Dashboard Pay After</h1>
             <p className="text-slate-600 text-lg">Controle completo da operação em tempo real</p>
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center flex-wrap">
             <Link to="/vendedores">
               <Button className="bg-blue-600 hover:bg-blue-700">
                 <UserCheck className="h-4 w-4 mr-2" />
                 Painel Vendedores
+              </Button>
+            </Link>
+            <Link to="/gamificacao">
+              <Button className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600">
+                <Trophy className="h-4 w-4 mr-2" />
+                Gamificação PRO
               </Button>
             </Link>
             <div className="flex gap-2">
